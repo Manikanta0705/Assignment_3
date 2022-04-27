@@ -1,22 +1,18 @@
-'''Savita and Hamida are friends. What is the probability that both will have 
-(i)Different birthdays?
-(ii)The same birthday? (ignoring a leap year).
-'''
+import numpy as np
+from numpy import linalg as LA
+from numpy import random as RN 
 
-'''SOLUTION:-
- given,
-  no of favourable outcomes for different birthdays = DF = 364
-no of favourable outcomes for same birthday = SF = 1
-total no of days in a year = TD =365
-probability of both having different birthdays = p_db =???
-probability of both having same birthdays = p_sb =???'''
+#Total number of days in a year
+#Sample size
+N = 365
 
-DF = 364
-SF = 1
-TD = 365
+#Generating Events
+#X=1 represents both having same birthdays
+#X=0 represents both having different birthdays
+x = RN.randint(0, high = 364, size=N)
 
-p_db = DF/TD
-p_sb = SF/TD
+#Finding the number of 1's and 0's obtained from above step.
+obt_0 = np.count_nonzero(x==0)
+obt_1 = N - obt_0
 
-print('probability of both having different birthdays =', p_db)
-print('probability of both having same birthdays =', p_sb)
+print("Randomn Probabilities:", obt_0/N, obt_1/N)
